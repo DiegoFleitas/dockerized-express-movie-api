@@ -1,3 +1,5 @@
+var auth = require('../../auth/helper.js');
+
 class User {
     constructor(email, firstName, lastName, password) {
         this.email = email;
@@ -5,6 +7,7 @@ class User {
         this.lastName = lastName;
         // TODO: use hash
         this.password = password;
+        this.token = auth.generateToken(this);
     }
 }
 

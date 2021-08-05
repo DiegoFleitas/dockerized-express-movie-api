@@ -1,14 +1,16 @@
 [
   {
-    "email": "ruben.rada@gmail.com",
-    "firstName": "Ruben",
-    "lastName": "Rada",
-    "password": "nillantonipena"
-  },
-  {
     "email": "diego.forlan@gmail.com",
     "firstName": "Diego",
     "lastName": "Forlan",
-    "password": "cachavacha10"
+    "password": "cachavacha10",
+    "token": "4603daed65386ef14cc9025a493477cf"
+  },
+  {
+    "email": "ruben.rada@gmail.com",
+    "firstName": "Ruben",
+    "lastName": "Rada",
+    "password": "nillantonipena",
+    "token": "ddbb1ba9972541e4d1ca48c03327b6b9"
   }
 ]

@@ -32,11 +32,14 @@ router.get("/test/favoritos/seed", function (req, res) {
     res.render('index', {title: 'success'});
 });
 
-router.get("/test/users/seed", function (req, res) {
-    let newUser = new User('diego.forlan@gmail.com', 'Diego', 'Forlan', 'cachavacha10');
-    db.insert('users', newUser);
-    newUser = new User('ruben.rada@gmail.com', 'Ruben', 'Rada', 'nillantonipena');
-    db.insert('users', newUser);
+router.get("/test/users/seed/1", function (req, res) {
+    const newUser1 = new User('diego.forlan@gmail.com', 'Diego', 'Forlan', 'cachavacha10');
+    db.insert('users', newUser1);
+});
+
+router.get("/test/users/seed/2", function (req, res) {
+    const newUser2 = new User('ruben.rada@gmail.com', 'Ruben', 'Rada', 'nillantonipena');
+    db.insert('users', newUser2);
     res.render('index', {title: 'success'});
 });
 

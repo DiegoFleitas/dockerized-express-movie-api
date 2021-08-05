@@ -74,10 +74,12 @@ class Database {
         }
     }
 
-    static find(db, data) {
+    // returns first match
+    static where(db, column, value) {
         switch (db) {
             case 'users':
-                const email = data.email;
+                const column = column;
+                const value = value;
                 fs.readFile(USERS_PATH, 'utf8', (err, usersRaw) => {
                     if (err) {
                         console.log('error at users exists!', err);
@@ -85,7 +87,7 @@ class Database {
                     }
                     let users = usersRaw ? JSON.parse(usersRaw) : [];
                     return users.find(user => {
-                        return user.email === email;
+                        return user[column] === value;
                     });
                 });
                 break;
