@@ -11,14 +11,14 @@ class Database {
         switch (db) {
             case 'users':
                 const user = data;
-                fs.readFile(USERS_PATH, 'utf8', (err, usersRaw) => {
+                fs.readFileSync(USERS_PATH, 'utf8', (err, usersRaw) => {
                     if (err) {
                         console.log('error saving users!', err);
                         return;
                     }
                     const users = usersRaw ? JSON.parse(usersRaw) : [];
                     users.push(user);
-                    fs.writeFile(USERS_PATH, JSON.stringify(users, null, 2), function (err) {
+                    fs.writeFileSync(USERS_PATH, JSON.stringify(users, null, 2), function (err) {
                         if (err) return console.log(err);
                         console.log('users saved!');
                     });
@@ -26,14 +26,14 @@ class Database {
                 break;
             case 'favoritos':
                 const favorito = data;
-                fs.readFile(FAVORITOS_PATH, 'utf8', (err, favoritosRaw) => {
+                fs.readFileSync(FAVORITOS_PATH, 'utf8', (err, favoritosRaw) => {
                     if (err) {
                         console.log('error saving favoritos!', err);
                         return;
                     }
                     const favoritos = favoritosRaw ? JSON.parse(favoritosRaw) : [];
                     favoritos.push(favorito);
-                    fs.writeFile(FAVORITOS_PATH, JSON.stringify(favoritos, null, 2), function (err) {
+                    fs.writeFileSync(FAVORITOS_PATH, JSON.stringify(favoritos, null, 2), function (err) {
                         if (err) return console.log(err);
                         console.log('favoritos saved!');
                     });
@@ -48,7 +48,7 @@ class Database {
         switch (db) {
             case 'users':
                 const email = data.email;
-                fs.readFile(USERS_PATH, 'utf8', (err, usersRaw) => {
+                fs.readFileSync(USERS_PATH, 'utf8', (err, usersRaw) => {
                     if (err) {
                         console.log('error deleting users!', err);
                         return;
@@ -60,7 +60,7 @@ class Database {
                     if (index > -1) {
                         users.splice(index, 1);
                     }
-                    fs.writeFile(USERS_PATH, JSON.stringify(users, null, 2), function (err) {
+                    fs.writeFileSync(USERS_PATH, JSON.stringify(users, null, 2), function (err) {
                         if (err) return console.log(err);
                         console.log('users deleted!');
                     });
@@ -78,9 +78,7 @@ class Database {
     static where(db, column, value) {
         switch (db) {
             case 'users':
-                const column = column;
-                const value = value;
-                fs.readFile(USERS_PATH, 'utf8', (err, usersRaw) => {
+                return fs.readFileSync(USERS_PATH, 'utf8', (err, usersRaw) => {
                     if (err) {
                         console.log('error at users exists!', err);
                         return;
