@@ -1,6 +1,5 @@
 var request = require('request');
 
-// TODO: replace
 const API_KEY = '825f79451255ce112042331fc0cb7c03';
 
 class MovieDB {
