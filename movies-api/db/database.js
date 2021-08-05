@@ -73,6 +73,29 @@ class Database {
                 throw new Error('Unknown db');
         }
     }
+
+    static find(db, data) {
+        switch (db) {
+            case 'users':
+                const email = data.email;
+                fs.readFile(USERS_PATH, 'utf8', (err, usersRaw) => {
+                    if (err) {
+                        console.log('error at users exists!', err);
+                        return;
+                    }
+                    let users = usersRaw ? JSON.parse(usersRaw) : [];
+                    return users.find(user => {
+                        return user.email === email;
+                    });
+                });
+                break;
+            case 'favoritos':
+                console.log('todo..');
+                break;
+            default:
+                throw new Error('Unknown db');
+        }
+    }
 }
 
 
