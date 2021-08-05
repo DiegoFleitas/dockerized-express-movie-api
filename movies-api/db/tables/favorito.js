@@ -17,7 +17,8 @@ class Favorito {
         this.title = title,
         this.video = video,
         this.voteAverage = voteAverage,
-        this.voteCount = voteCount
+        this.voteCount = voteCount,
+        this.addedAt = new Date();
     }
 }
 
