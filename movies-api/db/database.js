@@ -10,13 +10,14 @@ class Database {
     static insert(db, data) {
         switch (db) {
             case 'users':
+                const user = data;
                 fs.readFile(USERS_PATH, 'utf8', (err, usersRaw) => {
                     if (err) {
                         console.log('error saving users!', err);
                         return;
                     }
                     const users = usersRaw ? JSON.parse(usersRaw) : [];
-                    users.push(data);
+                    users.push(user);
                     fs.writeFile(USERS_PATH, JSON.stringify(users, null, 2), function (err) {
                         if (err) return console.log(err);
                         console.log('users saved!');
@@ -24,13 +25,14 @@ class Database {
                 });
                 break;
             case 'favoritos':
+                const favorito = data;
                 fs.readFile(FAVORITOS_PATH, 'utf8', (err, favoritosRaw) => {
                     if (err) {
                         console.log('error saving favoritos!', err);
                         return;
                     }
                     const favoritos = favoritosRaw ? JSON.parse(favoritosRaw) : [];
-                    favoritos.push(data);
+                    favoritos.push(favorito);
                     fs.writeFile(FAVORITOS_PATH, JSON.stringify(favoritos, null, 2), function (err) {
                         if (err) return console.log(err);
                         console.log('favoritos saved!');
@@ -42,34 +44,30 @@ class Database {
         }
     }
 
-    static select(db) {
+    static delete(db, data) {
         switch (db) {
             case 'users':
-                // fs.writeFile(USERS_PATH, 'Hello World!', function (err) {
-                //     if (err) return console.log(err);
-                // });
+                const email = data.email;
+                fs.readFile(USERS_PATH, 'utf8', (err, usersRaw) => {
+                    if (err) {
+                        console.log('error deleting users!', err);
+                        return;
+                    }
+                    let users = usersRaw ? JSON.parse(usersRaw) : [];
+                    var index = users.findIndex(user => {
+                        return user.email === email;
+                    });
+                    if (index > -1) {
+                        users.splice(index, 1);
+                    }
+                    fs.writeFile(USERS_PATH, JSON.stringify(users, null, 2), function (err) {
+                        if (err) return console.log(err);
+                        console.log('users deleted!');
+                    });
+                });
                 break;
             case 'favoritos':
-                // fs.writeFile(FAVORITOS_PATH, 'Hello World!', function (err) {
-                //     if (err) return console.log(err);
-                // });
-                break;
-            default:
-                throw new Error('Unknown db');
-        }
-    }
-
-    static update(db) {
-        switch (db) {
-            case 'users':
-                // fs.writeFile(USERS_PATH, 'Hello World!', function (err) {
-                //     if (err) return console.log(err);
-                // });
-                break;
-            case 'favoritos':
-                // fs.writeFile(FAVORITOS_PATH, 'Hello World!', function (err) {
-                //     if (err) return console.log(err);
-                // });
+                console.log('todo..');
                 break;
             default:
                 throw new Error('Unknown db');
