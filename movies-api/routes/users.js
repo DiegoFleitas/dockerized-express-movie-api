@@ -20,16 +20,16 @@ router.post('/register', function (req, res, next) {
             const user = new User(email, firstName, lastName, password);
             const exists = db.where('users', 'email', email);
             if (exists) {
-                res.status(403).send('user already exists.');
+                return res.status(403).send('user already exists.');
             } else {
                 db.insert('users', user);
-                res.status(200).send('user registered.');
+                return res.status(200).send('user registered.');
             }
         }
-        res.status(400).send('user data missing.');
+        return res.status(400).send('user data missing.');
     } catch (err) {
         console.log(err);
-        res.status(500).send('server error.');
+        return res.status(500).send('server error.');
     }
 });
 
