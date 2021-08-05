@@ -19,7 +19,6 @@ router.post('/register', function (req, res, next) {
         if (email && firstName && lastName && password) {
             const user = new User(email, firstName, lastName, password);
             const exists = db.where('users', 'email', email);
-            console.log('exists', exists);
             if (exists) {
                 res.status(403).send('user already exists.');
             } else {
