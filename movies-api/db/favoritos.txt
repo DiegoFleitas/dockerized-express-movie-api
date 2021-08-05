@@ -1,0 +1,11 @@
+[
+  {
+    "suggestionForTodayScore": "1"
+  },
+  {
+    "suggestionForTodayScore": "1"
+  },
+  {
+    "suggestionForTodayScore": "1"
+  }
+]
