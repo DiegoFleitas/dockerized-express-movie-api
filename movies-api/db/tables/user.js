@@ -5,8 +5,7 @@ class User {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        // TODO: use hash
-        this.password = password;
+        this.password = auth.hash(password);
         this.token = auth.generateToken(this);
     }
 }

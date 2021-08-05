@@ -6,22 +6,26 @@ var md5 = require('md5');
 const APP_SECRET = 'h4ackersW1llN3verKn0w';
 
 class Auth {
-    static check(user) {
-        let toCheck = db.where('users', 'email', user.email);
+    static check(email, password) {
+        let toCheck = db.where('users', 'email', email);
         if (toCheck) {
-            // TODO: use hashes
-            return toCheck.password === user.password;
+            const hashedPassword = toCheck.password;
+            return hashedPassword === auth.hash(password);
         }
         return false;
     }
 
     static generateToken(user) {
         // dummy token
-        return md5(user.email, APP_SECRET);
+        return this.hash(user.email, APP_SECRET);
     }
 
     static getUserByToken(token) {
         return db.where('users', 'token', token);
+    }
+
+    static hash(string) {
+        return md5(string, APP_SECRET);
     }
 }
 
