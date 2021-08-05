@@ -1,14 +1,14 @@
 [
   {
-    "email": "mail2",
-    "firstName": "firstname",
-    "lastName": "lastname",
-    "password": "password"
+    "email": "ruben.rada@gmail.com",
+    "firstName": "Ruben",
+    "lastName": "Rada",
+    "password": "nillantonipena"
   },
   {
-    "email": "mail",
-    "firstName": "firstname",
-    "lastName": "lastname",
-    "password": "password"
+    "email": "diego.forlan@gmail.com",
+    "firstName": "Diego",
+    "lastName": "Forlan",
+    "password": "cachavacha10"
   }
 ]
