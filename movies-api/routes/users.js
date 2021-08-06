@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var db = require('../db/database.js');
+var auth = require('../auth/helper.js');
 var User = require('../db/tables/user');
 var Favorito = require('../db/tables/favorito');
 
@@ -35,7 +36,23 @@ router.post('/register', function (req, res, next) {
 
 /* authenticate user. */
 router.post('/login', function (req, res, next) {
-    res.send('respond with a resource');
+    try {
+        const email = req.body.email;
+        const password = req.body.password;
+        if (email && password) {
+            if (auth.check(email, password)) {
+                const user = db.where('users', 'email', email);
+                const token = auth.generateToken(user);
+                return res.status(403).send(token);
+            } else {
+                return res.status(200).send('bad credentials.');
+            }
+        }
+        return res.status(400).send('login data missing.');
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('server error.');
+    }
 });
 
 /* add movie to user favorites. */

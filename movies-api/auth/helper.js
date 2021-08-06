@@ -10,7 +10,7 @@ class Auth {
         let toCheck = db.where('users', 'email', email);
         if (toCheck) {
             const hashedPassword = toCheck.password;
-            return hashedPassword === auth.hash(password);
+            return hashedPassword === this.hash(password);
         }
         return false;
     }
