@@ -11,7 +11,10 @@ router.get('/', function (req, res, next) {
 });
 
 router.get("/test/favoritos/seed", function (req, res) {
-    const newFavorito = new Favorito('ruben.rada@gmail.com', false,
+    const newFavorito = new Favorito(
+        73,
+        'ruben.rada@gmail.com',
+        false,
         null,
         [35, 18],
         63066,
