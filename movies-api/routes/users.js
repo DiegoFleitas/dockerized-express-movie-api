@@ -43,9 +43,9 @@ router.post('/login', function (req, res, next) {
             if (auth.checkCredentials(email, password)) {
                 const user = db.where('users', 'email', email);
                 const token = auth.generateToken(user);
-                return res.status(403).send(token);
+                return res.status(200).send(token);
             } else {
-                return res.status(200).send('bad credentials.');
+                return res.status(403).send('bad credentials.');
             }
         }
         return res.status(400).send('login data missing.');
@@ -57,7 +57,45 @@ router.post('/login', function (req, res, next) {
 
 /* add movie to user favorites. */
 router.post('/add/favorite', function (req, res, next) {
-    res.send('respond with a resource');
+    try {
+        if (!req.headers.authorization) {
+            return res.status(403).send('missing authorization header');
+        }
+        const token = req.headers.authorization;
+        if (auth.tokenIsValid(token)) {
+
+            const movie = req.body;
+            if (movie) {
+                const user = auth.getUserByToken(token);
+                const favorito = new Favorito(
+                    user.email,
+                    movie.suggestionScore,
+                    movie.adult,
+                    movie.backdropPath,
+                    movie.genreIds,
+                    movie.id,
+                    movie.originalLanguage,
+                    movie.originalTitle,
+                    movie.overview,
+                    movie.popularity,
+                    movie.posterPath,
+                    movie.releaseDate,
+                    movie.title,
+                    movie.video,
+                    movie.voteAverage,
+                    movie.voteCount
+                );
+                db.insert('favoritos', favorito);
+                return res.status(200).send('favorite added!');
+            }
+            return res.status(400).send('favorite data missing.');
+        } else {
+            return res.status(401).send('unauthorized');
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('server error.');
+    }
 });
 
 module.exports = router;

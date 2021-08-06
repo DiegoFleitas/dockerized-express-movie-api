@@ -1,9 +1,9 @@
 class Favorito {
-    constructor(suggestionScore, userEmail, adult, backdropPath, genreIds, id, originalLanguage, originalTitle,
+    constructor(userEmail, suggestionScore, adult, backdropPath, genreIds, id, originalLanguage, originalTitle,
                 overview, popularity, posterPath, releaseDate, title, video, voteAverage, voteCount
     ) {
-        this.suggestionScore = suggestionScore;
         this.userEmail = userEmail;
+        this.suggestionScore = suggestionScore;
         this.adult = adult,
         this.backdropPath = backdropPath,
         this.genreIds = genreIds,

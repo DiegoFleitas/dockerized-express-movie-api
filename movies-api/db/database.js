@@ -19,7 +19,7 @@ class Database {
                 break;
             case 'favoritos':
                 const favorito = data;
-                fs.readFileSync(FAVORITOS_PATH, 'utf8');
+                const favoritosRaw = fs.readFileSync(FAVORITOS_PATH, 'utf8');
                 const favoritos = favoritosRaw ? JSON.parse(favoritosRaw) : [];
                 favoritos.push(favorito);
                 fs.writeFileSync(FAVORITOS_PATH, JSON.stringify(favoritos, null, 2));

@@ -1,23 +1,13 @@
 [
   {
-    "suggestionForTodayScore": "7.35",
-    "userEmail": "ruben.rada@gmail.com",
+    "userEmail": "diego.forlan@gmail.com",
+    "suggestionScore": "93.93",
     "adult": false,
-    "backdropPath": null,
-    "genreIds": [
-      35,
-      18
-    ],
-    "id": 63066,
-    "originalLanguage": "es",
-    "originalTitle": "25 Watts",
-    "overview": "24 hours in the life of three street youths in Montevideo. Three teenage guys try to figure out what they're supposed to be doing with their lives in this drama from Uruguay that puts the emphasis on character over narrative.",
-    "popularity": 1.193,
-    "posterPath": "/cSuy4RgmLZmfZXyMAyDA07PkBPo.jpg",
-    "releaseDate": "2001-01-01",
-    "title": "25 Watts",
+    "id": 696374,
+    "overview": "An intriguing and sinful exploration of seduction, forbidden love, and redemption, Gabriel's Inferno is a captivating and wildly passionate tale of one man's escape from his own personal hell as he tries to earn the impossible--forgiveness and love.",
+    "popularity": 9.306,
+    "title": "Gabriel's Inferno",
     "video": false,
-    "voteAverage": 6.7,
-    "voteCount": 20
+    "addedAt": "2021-08-06T05:16:52.430Z"
   }
 ]
