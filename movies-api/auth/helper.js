@@ -1,6 +1,4 @@
 var db = require('../db/database.js');
-var User = require('../db/tables/user');
-var Favorito = require('../db/tables/favorito');
 var md5 = require('md5');
 
 const APP_SECRET = 'h4ackersW1llN3verKn0w';

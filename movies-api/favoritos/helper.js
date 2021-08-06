@@ -1,5 +1,3 @@
-var db = require('../db/database.js');
-var User = require('../db/tables/user');
 var Favorito = require('../db/tables/favorito');
 
 class FavoritosHelper {
