@@ -1,9 +1,9 @@
 class Favorito {
-    constructor(userEmail, suggestionScore, adult, backdropPath, genreIds, id, originalLanguage, originalTitle,
+    constructor(userEmail, suggestionForTodayScore, adult, backdropPath, genreIds, id, originalLanguage, originalTitle,
                 overview, popularity, posterPath, releaseDate, title, video, voteAverage, voteCount
     ) {
         this.userEmail = userEmail;
-        this.suggestionScore = suggestionScore;
+        this.suggestionForTodayScore = (Math.random() * 99).toFixed(2);
         this.adult = adult,
         this.backdropPath = backdropPath,
         this.genreIds = genreIds,

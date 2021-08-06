@@ -53,19 +53,25 @@ class Database {
         }
     }
 
-    // returns first match
     static where(db, column, value) {
         switch (db) {
             case 'users':
                 const usersRaw = fs.readFileSync(USERS_PATH, 'utf8');
                 let users = usersRaw ? JSON.parse(usersRaw) : [];
+                // returns first match
                 const entry = users.find(user => {
                     return user[column] === value;
                 });
                 return entry;
                 break;
             case 'favoritos':
-                console.log('todo..');
+                const favoritosRaw = fs.readFileSync(FAVORITOS_PATH, 'utf8');
+                let favoritos = favoritosRaw ? JSON.parse(favoritosRaw) : [];
+                // returns ALL matches
+                const entries = favoritos.filter(user => {
+                    return user[column] === value;
+                });
+                return entries;
                 break;
             default:
                 throw new Error('Unknown db');

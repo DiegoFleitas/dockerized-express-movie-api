@@ -3,6 +3,7 @@ var router = express.Router();
 
 var db = require('../db/database.js');
 var auth = require('../auth/helper.js');
+var favoritosHelper = require('../favoritos/helper');
 var User = require('../db/tables/user');
 var Favorito = require('../db/tables/favorito');
 
@@ -87,6 +88,31 @@ router.post('/add/favorite', function (req, res, next) {
                 );
                 db.insert('favoritos', favorito);
                 return res.status(200).send('favorite added!');
+            }
+            return res.status(400).send('favorite data missing.');
+        } else {
+            return res.status(401).send('unauthorized');
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('server error.');
+    }
+});
+
+/* fetch user favorites. */
+router.get('/favorites', function (req, res, next) {
+    try {
+        if (!req.headers.authorization) {
+            return res.status(403).send('missing authorization header');
+        }
+        const token = req.headers.authorization;
+        if (auth.tokenIsValid(token)) {
+            const movie = req.body;
+            if (movie) {
+                const user = auth.getUserByToken(token);
+                const favorites = db.where('favoritos', 'userEmail', user.email);
+                const favoritosByScore = favoritosHelper.withSuggestionScore(favorites);
+                return res.status(200).json(favoritosByScore);
             }
             return res.status(400).send('favorite data missing.');
         } else {
