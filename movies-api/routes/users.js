@@ -40,7 +40,7 @@ router.post('/login', function (req, res, next) {
         const email = req.body.email;
         const password = req.body.password;
         if (email && password) {
-            if (auth.check(email, password)) {
+            if (auth.checkCredentials(email, password)) {
                 const user = db.where('users', 'email', email);
                 const token = auth.generateToken(user);
                 return res.status(403).send(token);
@@ -57,11 +57,6 @@ router.post('/login', function (req, res, next) {
 
 /* add movie to user favorites. */
 router.post('/add/favorite', function (req, res, next) {
-    res.send('respond with a resource');
-});
-
-/* fetch user favorite movies. */
-router.get('/fetch/favorite', function (req, res, next) {
     res.send('respond with a resource');
 });
 

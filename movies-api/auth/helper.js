@@ -6,7 +6,7 @@ var md5 = require('md5');
 const APP_SECRET = 'h4ackersW1llN3verKn0w';
 
 class Auth {
-    static check(email, password) {
+    static checkCredentials(email, password) {
         let toCheck = db.where('users', 'email', email);
         if (toCheck) {
             const hashedPassword = toCheck.password;
