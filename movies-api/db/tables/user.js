@@ -6,7 +6,7 @@ class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = auth.hash(password);
-        this.token = auth.generateToken(this);
+        this.token = auth.generateToken(email);
     }
 }
 

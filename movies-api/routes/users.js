@@ -43,7 +43,7 @@ router.post('/login', function (req, res, next) {
         if (email && password) {
             if (auth.checkCredentials(email, password)) {
                 const user = db.where('users', 'email', email);
-                const token = auth.generateToken(user);
+                const token = auth.generateToken(user.email);
                 return res.status(200).send(token);
             } else {
                 return res.status(403).send('bad credentials.');

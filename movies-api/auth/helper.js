@@ -20,9 +20,9 @@ class Auth {
         return (exists);
     }
 
-    static generateToken(user) {
+    static generateToken(email) {
         // dummy token
-        return this.hash(user.email, APP_SECRET);
+        return this.hash(email, APP_SECRET);
     }
 
     static getUserByToken(token) {
