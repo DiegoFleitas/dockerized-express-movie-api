@@ -15,6 +15,11 @@ class Auth {
         return false;
     }
 
+    static tokenIsValid(token) {
+        const exists = db.where('users', 'token', token);
+        return (exists);
+    }
+
     static generateToken(user) {
         // dummy token
         return this.hash(user.email, APP_SECRET);
