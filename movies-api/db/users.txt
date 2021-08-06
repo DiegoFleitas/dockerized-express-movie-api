@@ -12,5 +12,12 @@
     "lastName": "Rada",
     "password": "20c374f5588a30264f50474607c8131d",
     "token": "ddbb1ba9972541e4d1ca48c03327b6b9"
+  },
+  {
+    "email": "diego@gmail.com",
+    "firstName": "Diego",
+    "lastName": "Fleitas",
+    "password": "8a8e3f057d43c5de9e70d578e690c056",
+    "token": "a9c033f9b68a989437c64ca2bd228c5e"
   }
 ]
