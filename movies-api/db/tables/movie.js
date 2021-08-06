@@ -1,8 +1,8 @@
-class Favorito {
-    constructor(suggestionScore, userEmail, adult, backdropPath, genreIds, id, originalLanguage, originalTitle,
+class Movie {
+    constructor(userEmail, adult, backdropPath, genreIds, id, originalLanguage, originalTitle,
                 overview, popularity, posterPath, releaseDate, title, video, voteAverage, voteCount
     ) {
-        this.suggestionScore = suggestionScore;
+        this.suggestionScore = (Math.random() * 99).toFixed(2);
         this.userEmail = userEmail;
         this.adult = adult,
         this.backdropPath = backdropPath,
@@ -17,9 +17,8 @@ class Favorito {
         this.title = title,
         this.video = video,
         this.voteAverage = voteAverage,
-        this.voteCount = voteCount,
-        this.addedAt = new Date();
+        this.voteCount = voteCount
     }
 }
 
-module.exports = Favorito;
+module.exports = Movie;

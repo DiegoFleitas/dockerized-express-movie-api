@@ -19,9 +19,15 @@ router.get("/", function (req, res) {
             if (keyword) {
                 console.log('search');
                 TheMovieDB.search(keyword)
-                    .then(movies => {
-                        // TODO: show movies ordered by suggestionScore
-                        return res.status(200).json(movies);
+                    .then(response => {
+                        const parsed = JSON.parse(response);
+                        const movies = parsed.results;
+                        if (movies) {
+                            const moviesByScore = TheMovieDB.withSuggestionScore(movies);
+                            return res.status(200).json(moviesByScore);
+                        } else {
+                            return res.status(400).send('something went wrong getting movies :(');
+                        }
                     })
                     .catch(err => {
                         console.log('search error', err);
@@ -30,9 +36,15 @@ router.get("/", function (req, res) {
             } else {
                 console.log('top');
                 TheMovieDB.top()
-                    .then(movies => {
-                        // TODO: show movies ordered by suggestionScore
-                        return res.status(200).json(movies);
+                    .then(response => {
+                        const parsed = JSON.parse(response);
+                        const movies = parsed.results;
+                        if (movies) {
+                            const moviesByScore = TheMovieDB.withSuggestionScore(movies);
+                            return res.status(200).json(moviesByScore);
+                        } else {
+                            return res.status(400).send('something went wrong getting movies :(');
+                        }
                     })
                     .catch(err => {
                         console.log('top error', err);
